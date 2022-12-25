@@ -59,6 +59,7 @@ window.onload = function () {
     let itemToPass = { id: this.id, title: this.title, description: this.description, price: this.price, img: this.img };
     cartFrame.window.postMessage({ event: "add_to_cart", item: itemToPass }, "*");
     itemsContainerEl.removeChild(this.htmlEl);
+    statusBarEl.innerHTML = "";
   }
 
   function removeFromCart(id) {

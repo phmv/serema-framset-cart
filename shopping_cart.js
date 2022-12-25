@@ -29,6 +29,7 @@ window.onload = function () {
     cartContainerEl.removeChild(this.htmlEl);
     cartSum -= cartItemsCollection.get(this.id).price;
     cartItemsCollection.delete(this.id);
+    statusBarEl.innerHTML = "";
     redrawCartSum();
   }
 
