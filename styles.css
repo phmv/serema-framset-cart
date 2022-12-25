@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: Helvetica, sans-serif;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.list-item {
+  position: relative;
+  display: flex;
+  cursor: pointer;
+  padding: 5px;
+  user-select: none;
+}
+
+.list-item:hover {
+  background-color: #e2e2e2;
+}
+
+.list-item__info {
+  margin-left: 10px;
+}
+.list-item__image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.cart-sum {
+  display: flex;
+  justify-content: space-between;
+}
