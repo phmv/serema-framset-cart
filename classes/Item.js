@@ -1,13 +1,15 @@
 class Item {
-  constructor(id, title, description, price, img, dblClickCallback) {
+  constructor(id, title, description, price, img, dblClickCallback, showDescCallback = () => {}) {
     this.id = id;
     this.title = title;
     this.description = description;
     this.price = price;
     this.img = img;
     this.dblClickCallback = dblClickCallback;
+    this.showDescCallback = showDescCallback;
     this.htmlEl = this.buildHtmlEl();
     this.htmlEl.addEventListener("dblclick", (e) => this.dblClickCallback());
+    this.htmlEl.addEventListener("click", (e) => this.showDescCallback());
   }
 
   buildHtmlEl() {

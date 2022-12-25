@@ -40,10 +40,11 @@ window.onload = function () {
   let cartFrame = parent.frames[1];
 
   let itemsContainerEl = document.querySelector(".items-container");
+  let statusBarEl = document.querySelector(".status-bar");
   let itemsCollection = new Map();
 
   itemsData.forEach((item) => {
-    let itemObj = new Item(item.id, item.title, item.description, item.price, item.img, moveToCart);
+    let itemObj = new Item(item.id, item.title, item.description, item.price, item.img, moveToCart, showDescription);
     itemsCollection.set(itemObj.id, itemObj);
     itemsContainerEl.appendChild(itemObj.htmlEl);
   });
@@ -62,5 +63,9 @@ window.onload = function () {
 
   function removeFromCart(id) {
     itemsContainerEl.appendChild(itemsCollection.get(id).htmlEl);
+  }
+
+  function showDescription() {
+    statusBarEl.innerHTML = this.description;
   }
 };

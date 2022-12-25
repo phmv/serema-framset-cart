@@ -3,10 +3,13 @@ window.onload = function () {
   let cartContainerEl = document.querySelector(".cart-container");
   let cartSumNumberEl = document.querySelector(".cart-sum__number");
 
+  let statusBarEl = document.querySelector(".status-bar");
+
   let cartItemsCollection = new Map();
   let cartSum = 0;
   redrawCartSum();
 
+  parent.postMessage({ event: "set_status", status: "Blablablabla" }, "*");
   window.addEventListener("message", (event) => {
     if (event.data.event == "add_to_cart") {
       addToCart(event.data.item);
@@ -14,7 +17,7 @@ window.onload = function () {
   });
 
   function addToCart(item) {
-    let itemObj = new Item(item.id, item.title, item.description, item.price, item.img, deleteFromCart);
+    let itemObj = new Item(item.id, item.title, item.description, item.price, item.img, deleteFromCart, showDescription);
     cartItemsCollection.set(itemObj.id, itemObj);
     cartContainerEl.appendChild(itemObj.htmlEl);
     cartSum += item.price;
@@ -31,5 +34,9 @@ window.onload = function () {
 
   function redrawCartSum() {
     cartSumNumberEl.innerHTML = `${cartSum}₽`;
+  }
+
+  function showDescription() {
+    statusBarEl.innerHTML = this.description;
   }
 };

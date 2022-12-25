@@ -37,3 +37,8 @@ ul {
   display: flex;
   justify-content: space-between;
 }
+
+.status-bar {
+  position: fixed;
+  bottom: 0;
+}
